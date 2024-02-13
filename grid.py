@@ -25,7 +25,7 @@ class Grid():
                 left_column, middle_column, right_column = line.strip().split(",")
                 c = {"Left":left_column,"Middle":middle_column,"Right":right_column}
                 self.grid.append(c)  
-            print(tabulate(self.grid, tablefmt = "plain"))
+            print(tabulate(self.grid, tablefmt = "simple_grid"))
 
 
     @property
