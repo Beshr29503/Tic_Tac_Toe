@@ -1,13 +1,12 @@
 from emoji import emojize
-from grid import Grid
 
 
 class One_player():
     def __init__(self):
         self._circle = emojize(":hollow_red_circle:")
         self._cross  = emojize(":cross_mark:")
-        self._ground = None
         self._icon = 0
+        self._comp = None
 
         self.startup()
         
@@ -25,14 +24,12 @@ class One_player():
             print("-------------------------")
             print("Game Started!\nYou are " + self.circle)
             self.icon = self.circle
-            self.ground = Grid()
-            self.ground.draw_grid()
+            self.comp = self.cross
         elif self.icon == 2:
             print("-------------------------")
             print("Game Started!\nYou are " + self.cross)
             self.icon = self.cross
-            self.ground = Grid()
-            self.ground.draw_grid()
+            self.comp = self.circle
 
 
     @property
@@ -46,16 +43,6 @@ class One_player():
     
 
     @property
-    def ground(self):
-        return self._ground
-   
-    
-    @ground.setter
-    def ground(self,g):
-        self._ground = g
-    
-
-    @property
     def icon(self):
         return self._icon
     
@@ -63,6 +50,16 @@ class One_player():
     @icon.setter
     def icon(self,i):
         self._icon = i
+
+
+    @property
+    def comp(self):
+        return self._comp
+    
+
+    @comp.setter
+    def comp(self,c):
+        self._comp = c
 
 
 
