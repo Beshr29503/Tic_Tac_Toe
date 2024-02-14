@@ -7,8 +7,8 @@ import sys
 
 
 class Game():
-    def __init__(self):
-        self.mode   = 0
+    def __init__(self,mode):
+        self.mode    = mode
         self._circle = 'O'
         self._cross  = 'X'
         self.player_one = None
@@ -31,13 +31,18 @@ class Game():
         return self._cross
 
 
+    @property
+    def ground(self):
+        return self._ground
+   
+    
+    @ground.setter
+    def ground(self,g):
+        self._ground = g
+
+    
     def startup(self):
         icon = ''
-        print("-------------------------")
-        print("Choose Mode:\n1.One Player Mode\n2.Two Player Mode")
-        
-        while self.mode != '1' and self.mode != '2':
-            self.mode = input("Please Insert 1 or 2:")
         
         if self.mode == '1':
             self.player_one = Human_player('1')
@@ -64,16 +69,6 @@ class Game():
 
         self.ground.draw_grid()
         self.play()
-
-
-    @property
-    def ground(self):
-        return self._ground
-   
-    
-    @ground.setter
-    def ground(self,g):
-        self._ground = g
 
 
     def play(self):
@@ -154,6 +149,6 @@ class Game():
         (self.grid[2]['Left'] == player._icon and self.grid[1]['Middle'] == player._icon and self.grid[0]['Right'] == player._icon)
        ):
         print(player,"Won!!!")
-        sys.exit()
+        sys.exit("Game Ended!!!")
        else:
            return
